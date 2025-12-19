@@ -90,22 +90,22 @@ pub(open) trait VPointwiseOperable {
 
 ///|
 pub impl VPointwiseOperable for Int with add_inplace(v : Vector, self : Int) -> Unit {
-  vfaddeqf(v.data, self.to_float())
+  vfaddeqf(v.data, Float::from_int(self))
 }
 
 ///|
 pub impl VPointwiseOperable for Int with sub_inplace(v : Vector, self : Int) -> Unit {
-  vfsubeqf(v.data, self.to_float())
+  vfsubeqf(v.data, Float::from_int(self))
 }
 
 ///|
 pub impl VPointwiseOperable for Int with mul_inplace(v : Vector, self : Int) -> Unit {
-  vfmuleqf(v.data, self.to_float())
+  vfmuleqf(v.data, Float::from_int(self))
 }
 
 ///|
 pub impl VPointwiseOperable for Int with div_inplace(v : Vector, self : Int) -> Unit {
-  vfdiveqf(v.data, self.to_float())
+  vfdiveqf(v.data, Float::from_int(self))
 }
 
 // ======= Float =======
@@ -258,7 +258,7 @@ pub fn Vector::arange(stop : Float) -> Vector {
   }
   guard s <= 16777216
   let data = vfcreate()
-  vflinspace(data, 0, (s - 1).to_float(), s)
+  vflinspace(data, 0, Float::from_int(s - 1), s)
   return { data, }
 }
 
